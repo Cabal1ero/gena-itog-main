@@ -458,38 +458,4 @@ class Command(BaseCommand):
                         EquipmentFeature.objects.create(equipment=equipment, category=category_key, name=feature_name)
                 self.stdout.write(f'    - Added features for {equipment.name}')
             else:
-                self.stdout.write(f'  - Equipment "{equipment.name}" for {car_model.name} already exists.')
-
-            # --- ВСЕГДА добавляем изображения (даже если комплектация уже есть) ---
-            headers = {'User-Agent': 'Mozilla/5.0 (compatible; LADA-Bot/1.0)'}
-            # Основное изображение
-            try:
-                response = requests.get(data['image_url'], stream=True, headers=headers, timeout=10)
-                if response.status_code == 200:
-                    ModelImage.objects.create(
-                        car_model=car_model,
-                        equipment=equipment,
-                        image=ContentFile(response.content, name=f'{car_model.name}_{equipment.name}_main.jpg'),
-                        title=f'{car_model.name} {equipment.name} (main)'
-                    )
-                    self.stdout.write(self.style.SUCCESS(f'    - Added main image for {equipment.name}'))
-                else:
-                    self.stdout.write(self.style.ERROR(f'    - Failed to download main image for {equipment.name}: HTTP {response.status_code}'))
-            except Exception as e:
-                self.stdout.write(self.style.ERROR(f"    - Could not download main image for {equipment.name}: {e}"))
-            # Дополнительные изображения
-            for idx, img_url in enumerate(data.get('extra_images', []), start=1):
-                try:
-                    response = requests.get(img_url, stream=True, headers=headers, timeout=10)
-                    if response.status_code == 200:
-                        ModelImage.objects.create(
-                            car_model=car_model,
-                            equipment=equipment,
-                            image=ContentFile(response.content, name=f'{car_model.name}_{equipment.name}_extra{idx}.jpg'),
-                            title=f'{car_model.name} {equipment.name} (extra {idx})'
-                        )
-                        self.stdout.write(self.style.SUCCESS(f'    - Added extra image {idx} for {equipment.name}'))
-                    else:
-                        self.stdout.write(self.style.ERROR(f'    - Failed to download extra image {idx} for {equipment.name}: HTTP {response.status_code}'))
-                except Exception as e:
-                    self.stdout.write(self.style.ERROR(f"    - Could not download extra image {idx} for {equipment.name}: {e}")) 
+                self.stdout.write(f'  - Equipment "{equipment.name}" for {car_model.name} already exists.') 
