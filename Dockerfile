@@ -22,7 +22,7 @@ WORKDIR /app/russkaya_dusha
 RUN python manage.py makemigrations
 RUN python manage.py migrate
 RUN python manage.py collectstatic --noinput
-
+RUN python manage.py populate_car_data
 # Открываем порт
 EXPOSE 8000
 
