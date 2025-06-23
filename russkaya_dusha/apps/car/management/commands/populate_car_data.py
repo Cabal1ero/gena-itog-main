@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand
-from apps.car.models import CarBrand, CarModel, Equipment, EquipmentFeature, ModelImage
+from apps.car.models import CarBrand, CarModel, Equipment, EquipmentFeature, ModelImage, Car
 from django.core.files.base import ContentFile
 import requests
 
@@ -87,7 +87,10 @@ class Command(BaseCommand):
                     'Безопасность': ['ABS', '2 подушки безопасности'],
                     'Мультимедиа': ['Аудиоподготовка'],
                 },
-                'image_url': 'http://placehold.co/600x400/E0E0E0/000000?text=Granta+Standard'
+                'image_url': 'https://upload.wikimedia.org/wikipedia/commons/7/7e/Lada_Granta_2018_IMG_20210410_124849.jpg',
+                'extra_images': [
+                    'https://upload.wikimedia.org/wikipedia/commons/2/2b/Lada_Granta_2018_IMG_20210410_124900.jpg',
+                ]
             },
             {
                 'name': 'Classic',
@@ -99,7 +102,10 @@ class Command(BaseCommand):
                     'Безопасность': ['ABS', '2 подушки безопасности'],
                     'Мультимедиа': ['Аудиосистема с USB'],
                 },
-                'image_url': 'http://placehold.co/600x400/A0A0A0/FFFFFF?text=Granta+Classic'
+                'image_url': 'https://upload.wikimedia.org/wikipedia/commons/7/7e/Lada_Granta_2018_IMG_20210410_124849.jpg',
+                'extra_images': [
+                    'https://upload.wikimedia.org/wikipedia/commons/2/2b/Lada_Granta_2018_IMG_20210410_124900.jpg',
+                ]
             },
             {
                 'name': 'Life',
@@ -110,10 +116,13 @@ class Command(BaseCommand):
                 'features': {
                     'Комфорт': ['Климат-контроль', 'Подогрев руля'],
                     'Безопасность': ['ABS, ESP', '4 подушки безопасности'],
-                    'Мультимедиа': ['Мультимедийная система с 7\" экраном'],
-                    'Экстерьер': ['Литые диски 15\"'],
+                    'Мультимедиа': ['Мультимедийная система с 7" экраном'],
+                    'Экстерьер': ['Литые диски 15"'],
                 },
-                'image_url': 'http://placehold.co/600x400/FFCC00/000000?text=Granta+Life'
+                'image_url': 'https://upload.wikimedia.org/wikipedia/commons/7/7e/Lada_Granta_2018_IMG_20210410_124849.jpg',
+                'extra_images': [
+                    'https://upload.wikimedia.org/wikipedia/commons/2/2b/Lada_Granta_2018_IMG_20210410_124900.jpg',
+                ]
             }
         ])
 
@@ -152,7 +161,10 @@ class Command(BaseCommand):
                     'Безопасность': ['ABS', 'Подушка безопасности водителя'],
                     'Мультимедиа': ['Бортовой компьютер'],
                 },
-                'image_url': 'http://placehold.co/600x400/E0E0E0/000000?text=Kalina+Standard'
+                'image_url': 'https://upload.wikimedia.org/wikipedia/commons/2/2d/Lada_Kalina_II_2012_IMG_002.jpg',
+                'extra_images': [
+                    'https://upload.wikimedia.org/wikipedia/commons/2/2d/Lada_Kalina_II_2012_IMG_003.jpg',
+                ]
             },
             {
                 'name': 'Comfort',
@@ -164,7 +176,10 @@ class Command(BaseCommand):
                     'Безопасность': ['ABS', '2 подушки безопасности'],
                     'Мультимедиа': ['Аудиосистема с USB'],
                 },
-                'image_url': 'http://placehold.co/600x400/A0A0A0/FFFFFF?text=Kalina+Comfort'
+                'image_url': 'https://upload.wikimedia.org/wikipedia/commons/2/2d/Lada_Kalina_II_2012_IMG_002.jpg',
+                'extra_images': [
+                    'https://upload.wikimedia.org/wikipedia/commons/2/2d/Lada_Kalina_II_2012_IMG_003.jpg',
+                ]
             },
             {
                 'name': 'Luxe',
@@ -175,10 +190,13 @@ class Command(BaseCommand):
                 'features': {
                     'Комфорт': ['Климат-контроль', 'Подогрев руля', 'Датчики дождя и света'],
                     'Безопасность': ['ABS, ESP', '4 подушки безопасности'],
-                    'Мультимедиа': ['Мультимедийная система с 7\" экраном'],
-                    'Экстерьер': ['Литые диски 15\"'],
+                    'Мультимедиа': ['Мультимедийная система с 7" экраном'],
+                    'Экстерьер': ['Литые диски 15"'],
                 },
-                'image_url': 'http://placehold.co/600x400/FFCC00/000000?text=Kalina+Luxe'
+                'image_url': 'https://upload.wikimedia.org/wikipedia/commons/2/2d/Lada_Kalina_II_2012_IMG_002.jpg',
+                'extra_images': [
+                    'https://upload.wikimedia.org/wikipedia/commons/2/2d/Lada_Kalina_II_2012_IMG_003.jpg',
+                ]
             }
         ])
 
@@ -210,41 +228,155 @@ class Command(BaseCommand):
             {
                 'name': 'Classic',
                 'equipment_type': 'standard',
-                'price': 1250000,
+                'price': 1200000,
                 'power': 90,
                 'features': {
-                    'Комфорт': ['Электростеклоподъемники всех дверей', 'Кондиционер'],
+                    'Комфорт': ['Электростеклоподъемники всех дверей'],
                     'Безопасность': ['ABS', 'Подушка безопасности водителя'],
-                    'Мультимедиа': ['Аудиосистема'],
+                    'Мультимедиа': ['Аудиоподготовка'],
                 },
-                'image_url': 'http://placehold.co/600x400/E0E0E0/000000?text=Largus+Classic'
+                'image_url': 'https://upload.wikimedia.org/wikipedia/commons/2/2a/Lada_Largus_Cross_IMG_20210612_153015.jpg',
+                'extra_images': [
+                    'https://upload.wikimedia.org/wikipedia/commons/2/2a/Lada_Largus_Cross_IMG_20210612_153016.jpg',
+                ]
             },
             {
                 'name': 'Comfort',
                 'equipment_type': 'comfort',
-                'price': 1400000,
+                'price': 1350000,
                 'power': 106,
                 'features': {
-                    'Комфорт': ['Подогрев передних сидений', 'Электропривод и обогрев зеркал'],
+                    'Комфорт': ['Кондиционер', 'Подогрев передних сидений'],
                     'Безопасность': ['ABS', '2 подушки безопасности'],
-                    'Мультимедиа': ['Мультимедийная система с экраном'],
+                    'Мультимедиа': ['Аудиосистема с USB'],
                 },
-                'image_url': 'http://placehold.co/600x400/A0A0A0/FFFFFF?text=Largus+Comfort'
+                'image_url': 'https://upload.wikimedia.org/wikipedia/commons/2/2a/Lada_Largus_Cross_IMG_20210612_153015.jpg',
+                'extra_images': [
+                    'https://upload.wikimedia.org/wikipedia/commons/2/2a/Lada_Largus_Cross_IMG_20210612_153016.jpg',
+                ]
             },
             {
                 'name': 'Enjoy',
                 'equipment_type': 'luxury',
-                'price': 1600000,
+                'price': 1500000,
                 'power': 106,
+                'transmission': 'automatic',
                 'features': {
                     'Комфорт': ['Климат-контроль', 'Круиз-контроль', 'Датчики парковки'],
                     'Безопасность': ['ABS, ESP', '4 подушки безопасности'],
-                    'Мультимедиа': ['Мультимедийная система с 7\" экраном'],
-                    'Экстерьер': ['Литые диски 16\"'],
+                    'Мультимедиа': ['Мультимедийная система с 7" экраном'],
+                    'Экстерьер': ['Литые диски 16"'],
                 },
-                'image_url': 'http://placehold.co/600x400/FFCC00/000000?text=Largus+Enjoy'
+                'image_url': 'https://upload.wikimedia.org/wikipedia/commons/2/2a/Lada_Largus_Cross_IMG_20210612_153015.jpg',
+                'extra_images': [
+                    'https://upload.wikimedia.org/wikipedia/commons/2/2a/Lada_Largus_Cross_IMG_20210612_153016.jpg',
+                ]
             }
         ])
+
+        # --- СОЗДАНИЕ НЕСКОЛЬКИХ АВТОМОБИЛЕЙ ---
+        # Примерные данные для автомобилей
+        cars_to_create = [
+            # Vesta
+            {
+                'model': car_model,
+                'equipment': car_model.equipments.filter(name='Comfort').first(),
+                'year': 2023,
+                'color': 'Белый',
+                'price': 1700000,
+                'mileage': 0,
+                'transmission': 'manual',
+                'fuel_type': 'petrol',
+                'body_type': 'sedan',
+                'equipment_display': 'comfort',
+                'engine_volume': 1.6,
+                'power': 106,
+                'description': 'LADA Vesta Comfort, новый автомобиль.',
+                'is_available': True,
+                'is_new': True,
+            },
+            # Granta
+            {
+                'model': granta_model,
+                'equipment': granta_model.equipments.filter(name='Life').first(),
+                'year': 2022,
+                'color': 'Серый',
+                'price': 1250000,
+                'mileage': 5000,
+                'transmission': 'automatic',
+                'fuel_type': 'petrol',
+                'body_type': 'sedan',
+                'equipment_display': 'luxury',
+                'engine_volume': 1.6,
+                'power': 106,
+                'description': 'LADA Granta Life, с небольшим пробегом.',
+                'is_available': True,
+                'is_new': False,
+            },
+            # Kalina
+            {
+                'model': kalina_model,
+                'equipment': kalina_model.equipments.filter(name='Luxe').first(),
+                'year': 2021,
+                'color': 'Красный',
+                'price': 1100000,
+                'mileage': 15000,
+                'transmission': 'automatic',
+                'fuel_type': 'petrol',
+                'body_type': 'wagon',
+                'equipment_display': 'luxury',
+                'engine_volume': 1.6,
+                'power': 106,
+                'description': 'LADA Kalina Luxe, ухоженный автомобиль.',
+                'is_available': True,
+                'is_new': False,
+            },
+            # Largus
+            {
+                'model': largus_model,
+                'equipment': largus_model.equipments.filter(name='Enjoy').first() or largus_model.equipments.first(),
+                'year': 2023,
+                'color': 'Синий',
+                'price': 1400000,
+                'mileage': 0,
+                'transmission': 'manual',
+                'fuel_type': 'petrol',
+                'body_type': 'wagon',
+                'equipment_display': 'comfort',
+                'engine_volume': 1.6,
+                'power': 106,
+                'description': 'LADA Largus Comfort, новый автомобиль.',
+                'is_available': True,
+                'is_new': True,
+            },
+        ]
+        for car_data in cars_to_create:
+            # Получаем equipment_display из комплектации, если она есть
+            equipment = car_data['equipment']
+            equipment_display = equipment.equipment_type if equipment else car_data.get('equipment_display', 'standard')
+            car, created = Car.objects.get_or_create(
+                model=car_data['model'],
+                equipment=equipment,
+                year=car_data['year'],
+                color=car_data['color'],
+                defaults={
+                    'price': car_data['price'],
+                    'mileage': car_data['mileage'],
+                    'transmission': car_data['transmission'],
+                    'fuel_type': car_data['fuel_type'],
+                    'body_type': car_data['body_type'],
+                    'equipment_display': equipment_display,
+                    'engine_volume': car_data['engine_volume'],
+                    'power': car_data['power'],
+                    'description': car_data['description'],
+                    'is_available': car_data['is_available'],
+                    'is_new': car_data['is_new'],
+                }
+            )
+            if created:
+                self.stdout.write(self.style.SUCCESS(f'Successfully created Car: {car}'))
+            else:
+                self.stdout.write(f'Car "{car}" already exists.')
 
         self.stdout.write(self.style.SUCCESS('Database population complete!'))
 
@@ -261,7 +393,10 @@ class Command(BaseCommand):
                         'Безопасность': ['ABS', '2 подушки безопасности'],
                         'Мультимедиа': ['Аудиосистема с USB и Bluetooth'],
                     },
-                    'image_url': 'http://placehold.co/600x400/E0E0E0/000000?text=Vesta+Comfort'
+                    'image_url': 'https://upload.wikimedia.org/wikipedia/commons/2/2e/Lada_Vesta_2015_IMG_1087.jpg',
+                    'extra_images': [
+                        'https://upload.wikimedia.org/wikipedia/commons/7/7d/Lada_Vesta_2015_IMG_1090.jpg',
+                    ]
                 },
                 {
                     'name': 'Luxe',
@@ -275,7 +410,10 @@ class Command(BaseCommand):
                         'Мультимедиа': ['Мультимедийная система с 7" экраном'],
                         'Экстерьер': ['Литые диски 16"'],
                     },
-                    'image_url': 'http://placehold.co/600x400/A0A0A0/FFFFFF?text=Vesta+Luxe'
+                    'image_url': 'https://upload.wikimedia.org/wikipedia/commons/2/2e/Lada_Vesta_2015_IMG_1087.jpg',
+                    'extra_images': [
+                        'https://upload.wikimedia.org/wikipedia/commons/7/7d/Lada_Vesta_2015_IMG_1090.jpg',
+                    ]
                 },
                 {
                     'name': 'Sportline',
@@ -290,7 +428,10 @@ class Command(BaseCommand):
                         'Экстерьер': ['Спортивный обвес', 'Литые диски 17"', 'Спойлер'],
                         'Интерьер': ['Спортивные сиденья с красной прострочкой'],
                     },
-                    'image_url': 'http://placehold.co/600x400/FF0000/FFFFFF?text=Vesta+Sportline'
+                    'image_url': 'https://upload.wikimedia.org/wikipedia/commons/2/2e/Lada_Vesta_2015_IMG_1087.jpg',
+                    'extra_images': [
+                        'https://upload.wikimedia.org/wikipedia/commons/7/7d/Lada_Vesta_2015_IMG_1090.jpg',
+                    ]
                 }
             ]
 
@@ -312,24 +453,43 @@ class Command(BaseCommand):
 
                 # Добавление опций
                 for category_name, features_list in data['features'].items():
-                    # Находим ключ категории по значению
                     category_key = next((key for key, value in EquipmentFeature.FEATURE_CATEGORY_CHOICES if value == category_name), 'other')
                     for feature_name in features_list:
                         EquipmentFeature.objects.create(equipment=equipment, category=category_key, name=feature_name)
                 self.stdout.write(f'    - Added features for {equipment.name}')
-                
-                # Добавление изображения для комплектации
+            else:
+                self.stdout.write(f'  - Equipment "{equipment.name}" for {car_model.name} already exists.')
+
+            # --- ВСЕГДА добавляем изображения (даже если комплектация уже есть) ---
+            headers = {'User-Agent': 'Mozilla/5.0 (compatible; LADA-Bot/1.0)'}
+            # Основное изображение
+            try:
+                response = requests.get(data['image_url'], stream=True, headers=headers, timeout=10)
+                if response.status_code == 200:
+                    ModelImage.objects.create(
+                        car_model=car_model,
+                        equipment=equipment,
+                        image=ContentFile(response.content, name=f'{car_model.name}_{equipment.name}_main.jpg'),
+                        title=f'{car_model.name} {equipment.name} (main)'
+                    )
+                    self.stdout.write(self.style.SUCCESS(f'    - Added main image for {equipment.name}'))
+                else:
+                    self.stdout.write(self.style.ERROR(f'    - Failed to download main image for {equipment.name}: HTTP {response.status_code}'))
+            except Exception as e:
+                self.stdout.write(self.style.ERROR(f"    - Could not download main image for {equipment.name}: {e}"))
+            # Дополнительные изображения
+            for idx, img_url in enumerate(data.get('extra_images', []), start=1):
                 try:
-                    response = requests.get(data['image_url'], stream=True)
+                    response = requests.get(img_url, stream=True, headers=headers, timeout=10)
                     if response.status_code == 200:
                         ModelImage.objects.create(
                             car_model=car_model,
                             equipment=equipment,
-                            image=ContentFile(response.content, name=f'{car_model.name}_{equipment.name}.png'),
-                            title=f'{car_model.name} {equipment.name}'
+                            image=ContentFile(response.content, name=f'{car_model.name}_{equipment.name}_extra{idx}.jpg'),
+                            title=f'{car_model.name} {equipment.name} (extra {idx})'
                         )
-                        self.stdout.write(self.style.SUCCESS(f'    - Added image for {equipment.name}'))
-                except requests.exceptions.RequestException as e:
-                    self.stdout.write(self.style.ERROR(f"    - Could not download image for {equipment.name}: {e}"))
-            else:
-                self.stdout.write(f'  - Equipment "{equipment.name}" for {car_model.name} already exists.') 
+                        self.stdout.write(self.style.SUCCESS(f'    - Added extra image {idx} for {equipment.name}'))
+                    else:
+                        self.stdout.write(self.style.ERROR(f'    - Failed to download extra image {idx} for {equipment.name}: HTTP {response.status_code}'))
+                except Exception as e:
+                    self.stdout.write(self.style.ERROR(f"    - Could not download extra image {idx} for {equipment.name}: {e}")) 

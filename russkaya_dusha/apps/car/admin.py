@@ -41,7 +41,7 @@ class EquipmentAdmin(admin.ModelAdmin):
     list_display = ('name', 'car_model', 'price', 'equipment_type')
     list_filter = ('car_model', 'equipment_type')
     search_fields = ('name', 'car_model__name')
-    inlines = [EquipmentFeatureInline]
+    inlines = [EquipmentFeatureInline, ModelImageInline]
 
 @admin.register(ModelImage)
 class ModelImageAdmin(admin.ModelAdmin):

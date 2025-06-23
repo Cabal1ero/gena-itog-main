@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block title %}Модели - Автосалон "Русская душа"{% endblock %}
 
 {% block content %}
@@ -314,7 +314,7 @@
             {% if car.image %}
             <img src="{{ car.image.url }}" alt="{{ car.model }}" class="w-full h-full object-cover">
             {% else %}
-            <img src="/static/img/vesta.jpg" alt="{{ car.model }}" class="w-full h-full object-cover">
+            <img src="https://placehold.co/600x400/cccccc/000000?text={{ car.model }}" alt="{{ car.model }}" class="w-full h-full object-cover">
             {% endif %}
             
             {% if car.is_new %}
