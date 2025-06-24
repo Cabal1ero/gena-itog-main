@@ -70,11 +70,19 @@
   <!-- Цена и кнопка заказа -->
   <div class="mt-8">
       <div class="text-3xl font-bold text-right mb-4" id="equipment-price"></div>
+      {% if user.is_authenticated %}
     <a href="{% url 'order:order_car' car_model.id %}">
     <button class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-4 px-6 rounded-md mb-4 transition duration-300">
         Заказать онлайн
     </button>
   </a>
+  {% else %}
+  <a href="{% url 'accounts:auth' %}?next={{ request.path }}">
+    <button class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-4 px-6 rounded-md mb-4 transition duration-300">
+        Заказать онлайн
+    </button>
+  </a>
+  {% endif %}
     <p class="text-gray-500 text-sm text-center">
       Заказать онлайн или посетить наш салон для оформления заказа
     </p>
